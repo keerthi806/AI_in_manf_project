@@ -1,0 +1,24 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Virtual environments
+.AI_mfg/
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Data
+AI_mfg_data/
+
+# macOS
+.DS_Store
+
+# Jupyter
+.profile/
