@@ -273,6 +273,7 @@ Checkpoint files should be tracked through Git LFS rather than committed as ordi
 - Reproducibility depends on compatible dependency versions and consistent training configurations.
 - Future work could include automated tests, configuration files, and systematic architecture ablation studies.
 - Additional evaluation across different displacement magnitudes and deformation patterns could help characterize model performance.
+- Add docstrings to model architecture classes and script functions.
 
 ## Acknowledgements
 

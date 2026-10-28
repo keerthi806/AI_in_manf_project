@@ -1,5 +1,3 @@
-"""Training and testing loops."""
-
 import time
 from pathlib import Path
 

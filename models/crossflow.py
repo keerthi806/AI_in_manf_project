@@ -1,5 +1,3 @@
-"""Transformer-based DIC model."""
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -7,8 +5,6 @@ from torchvision.models import resnet34, ResNet34_Weights
 
 
 class ResNet34Backbone(nn.Module):
-    """ResNet34 stem + layer1/layer2 for a grayscale image."""
-
     def __init__(self, pretrained=True):
         super().__init__()
 
@@ -34,8 +30,6 @@ class ResNet34Backbone(nn.Module):
 
 
 class SpatialTransformerEncoder(nn.Module):
-    """Self-attention over the flattened feature map."""
-
     def __init__(self, in_channels=128, embed_dim=128, grid_size=32,
                  num_heads=4, num_layers=2, dropout=0.1):
         super().__init__()
@@ -69,8 +63,6 @@ class SpatialTransformerEncoder(nn.Module):
 
 
 class CrossAttention(nn.Module):
-    """Initial-image tokens attend to final-image tokens."""
-
     def __init__(self, embed_dim=128, num_heads=4, dropout=0.1):
         super().__init__()
 
@@ -103,8 +95,6 @@ class CrossAttention(nn.Module):
 
 
 class GlobalMatching(nn.Module):
-    """Soft-argmax matching on a grid; returns coarse flow in grid units."""
-
     def __init__(self, grid_size=32, temperature=0.07):
         super().__init__()
         self.grid_size = grid_size
@@ -134,8 +124,6 @@ class GlobalMatching(nn.Module):
 
 
 class DisplacementDecoder(nn.Module):
-    """Refine the coarse grid flow to full image resolution."""
-
     def __init__(self, feature_channels=64, coarse_scale=8.0, output_size=256):
         super().__init__()
 
@@ -181,8 +169,6 @@ class DisplacementDecoder(nn.Module):
 
 
 class TransformerDIC(nn.Module):
-    """Predicts a [B, 2, H, W] displacement field from two images."""
-
     def __init__(self, pretrained=True, embed_dim=128, grid_size=32,
                  num_heads=4, num_layers=2, dropout=0.1,
                  temperature=0.07, decoder_channels=64, image_size=256):

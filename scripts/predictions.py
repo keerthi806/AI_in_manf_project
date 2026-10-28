@@ -1,11 +1,3 @@
-"""Standalone prediction script reproduced from predict.ipynb.
-
-Loads the three trained models from ``models/checkpoints/``, runs inference on a
-single random sample from ``AI_mfg_data/``, prints displacement-comparison
-metrics, draws ground-truth-vs-predicted quiver plots, and plots the saved
-training loss curves for every model architecture.
-"""
-
 import sys
 from pathlib import Path
 

@@ -1,13 +1,9 @@
-"""EfficientNet-B2 + Transformer encoder + Transformer decoder."""
-
 import torch
 import torch.nn as nn
 from torchvision.models import EfficientNet_B2_Weights, efficientnet_b2
 
 
 class EfficientNetB2Backbone(nn.Module):
-    """Shared EfficientNet-B2 trunk; returns strides 2, 4, 8 and 16."""
-
     def __init__(self, pretrained=True):
         super().__init__()
         weights = EfficientNet_B2_Weights.DEFAULT if pretrained else None
@@ -36,8 +32,6 @@ class EfficientNetB2Backbone(nn.Module):
 
 
 class UpBlock(nn.Module):
-    """ConvTranspose upsampling followed by convolutional refinement."""
-
     def __init__(self, in_channels, out_channels, skip_channels=0):
         super().__init__()
         self.up = nn.ConvTranspose2d(in_channels, out_channels, 4, 2, 1)
